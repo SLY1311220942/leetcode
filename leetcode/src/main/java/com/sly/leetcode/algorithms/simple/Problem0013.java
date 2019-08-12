@@ -1,5 +1,7 @@
 package com.sly.leetcode.algorithms.simple;
 
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 罗马数字转整数
@@ -33,10 +35,63 @@ package com.sly.leetcode.algorithms.simple;
  */
 public class Problem0013 {
 	public static void main(String[] args) {
-		
+		System.out.println(romanToInt("III"));
+		System.out.println(romanToInt("IV"));
+		System.out.println(romanToInt("IX"));
+		System.out.println(romanToInt("LVIII"));
+		System.out.println(romanToInt("MCMXCIV"));
 	}
 	
-	public int romanToInt(String s) {
-        return 0;
+	public static int romanToInt(String s) {
+		Map<Character, Integer> valueTable = new HashMap<Character, Integer>();
+		valueTable.put(new Character('I'), new Integer(1));
+		valueTable.put(new Character('V'), new Integer(5));
+		valueTable.put(new Character('X'), new Integer(10));
+		valueTable.put(new Character('L'), new Integer(50));
+		valueTable.put(new Character('C'), new Integer(100));
+		valueTable.put(new Character('D'), new Integer(500));
+		valueTable.put(new Character('M'), new Integer(1000));
+		
+		int total = 0;
+		char[] charArray = s.toCharArray();
+		for (int i = 0; i < charArray.length; i++) {
+			if(charArray[i] == 'I') {
+				if((i + 1 < charArray.length) && charArray[i + 1] == 'V') {
+					i ++;
+					total += 4;
+				} else if((i + 1 < charArray.length) && charArray[i + 1] == 'X'){
+					i ++;
+					total += 9;
+				} else {
+					total += 1;
+				}
+			} else if(charArray[i] == 'X') {
+				if((i + 1 < charArray.length) && charArray[i + 1] == 'L') {
+					i ++;
+					total += 40;
+				} else if((i + 1 < charArray.length) && charArray[i + 1] == 'C') {
+					i ++;
+					total += 90;
+				} else {
+					total += 10;
+				}
+			} else if(charArray[i] == 'C') {
+				if((i + 1 < charArray.length) && charArray[i + 1] == 'D') {
+					i ++;
+					total += 400;
+				} else if((i + 1 < charArray.length) && charArray[i + 1] == 'M') {
+					i ++;
+					total += 900;
+				} else {
+					total += 100;
+				}
+			} else {
+				total += valueTable.get(new Character(charArray[i]));
+			}
+			
+			
+		}
+		
+        return total;
     }
 }
