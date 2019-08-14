@@ -71,10 +71,10 @@ public class Problem0020 {
 	public static String[] strs = { "\\(\\)", "\\[\\]", "\\{\\}" };
 
 	public static void main(String[] args) {
-		//String s = "([{[]()}()])";
+		// String s = "([{[]()}()])";
 		String s = "()";
 		System.out.println(isValid2(s));
-		//System.out.println(isValid(s));
+		// System.out.println(isValid(s));
 	}
 
 	public static boolean isValid(String s) {
@@ -105,56 +105,70 @@ public class Problem0020 {
 		Stack<Character> stack = new Stack<>();
 		char[] strArray = s.toCharArray();
 		for (char str : strArray) {
-			if(str == '{' || str == '[' || str == '(') {
+			if (str == '{' || str == '[' || str == '(') {
 				// 开括号 压栈
 				stack.add(str);
 			} else {
 				// 闭括号 出栈
-				if(stack.empty()) {
+				if (stack.empty()) {
 					return false;
 				}
 				Character pop = stack.pop();
-				if(str == '}' ) {	
-					if('{' != pop) {
+				if (str == '}') {
+					if ('{' != pop) {
 						return false;
 					}
-				} else if(str == ']') {
-					if('[' != pop) {
+				} else if (str == ']') {
+					if ('[' != pop) {
 						return false;
 					}
-				} else if(str == ')'){
-					if('(' != pop) {
+				} else if (str == ')') {
+					if ('(' != pop) {
 						return false;
 					}
 				}
-				
+
 			}
 		}
-		if(stack.empty()) {
+		if (stack.empty()) {
 			return true;
-		} 
+		}
 		return false;
 	}
-	
-	
+
+	/**
+	 * 这个是最快的只要1ms
+	 * 
+	 * @param s
+	 * @return
+	 * @author sly
+	 * @time 2019年8月14日
+	 */
 	public static boolean isValid3(String s) {
 		char[] stack = new char[s.length()];
-        int top = -1;
-        for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-            //左括号入栈
-            if (ch == '[' || ch == '{' || ch == '(') {
-                stack[++top] = ch;
-            } else {
-                //右括号处理
-                if (top == -1) return false;
-                if (ch == ']' && stack[top] != '[') return false;
-                if (ch == '}' && stack[top] != '{') return false;
-                if (ch == ')' && stack[top] != '(') return false;
-                //匹配成功
-                top--;
-            }
-        }
-        return top == -1;   
+		int top = -1;
+		for (int i = 0; i < s.length(); i++) {
+			char ch = s.charAt(i);
+			// 左括号入栈
+			if (ch == '[' || ch == '{' || ch == '(') {
+				stack[++top] = ch;
+			} else {
+				// 右括号处理
+				if (top == -1)
+					return false;
+				if (ch == ']' && stack[top] != '[') {
+					return false;
+				}
+				if (ch == '}' && stack[top] != '{') {
+					return false;
+				}
+				if (ch == ')' && stack[top] != '(') {
+					return false;
+				}
+				// 匹配成功
+				top--;
+			}
+		}
+		return top == -1;
 	}
 }
