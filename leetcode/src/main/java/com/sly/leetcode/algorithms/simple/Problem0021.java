@@ -17,7 +17,7 @@ package com.sly.leetcode.algorithms.simple;
  * @author sly
  * @time 2019年8月14日
  */
-public class Problem21 {
+public class Problem0021 {
 	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 		return null;
 	}
