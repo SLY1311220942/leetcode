@@ -2,6 +2,9 @@ package com.sly.leetcode.algorithms.simple;
 
 /**
  * <p>
+ * 14.最长公共前缀
+ * </p>
+ * <p>
  * 编写一个函数来查找字符串数组中的最长公共前缀。
  * </p>
  * <p>
