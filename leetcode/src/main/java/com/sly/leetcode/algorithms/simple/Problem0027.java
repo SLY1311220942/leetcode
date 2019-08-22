@@ -80,10 +80,35 @@ package com.sly.leetcode.algorithms.simple;
 public class Problem0027 {
 
 	public static void main(String[] args) {
-
+		int[] nums = { 1, 1, 1, 2, 2, 3, 3, 3, 4, 7, 8, 8, 8, 9 };
+		int val = removeElement(nums, 3);
+		System.out.println("==============");
+		System.out.println(val);
+		for (int i = 0; i < val; i++) {
+			System.out.print(nums[i] + " ");
+		}
+		
 	}
 
+	/**
+	 * 
+	 * @param nums
+	 * @param val
+	 * @return
+	 * @author sly
+	 * @time 2019年8月22日
+	 */
 	public static int removeElement(int[] nums, int val) {
-		return 0;
+		if (nums == null || nums.length == 0) {
+			return 0;
+		}
+		int count = 0;
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] != val) {
+				nums[count] = nums[i];
+				count ++;
+			}
+		}
+		return count;
 	}
 }

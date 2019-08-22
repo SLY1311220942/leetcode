@@ -45,10 +45,56 @@ package com.sly.leetcode.algorithms.simple;
 public class Problem0028 {
 
 	public static void main(String[] args) {
-
+		String haystack = "hello";
+		String needle = "hellos";
+		int strStr = strStr(haystack, needle);
+		System.out.println(strStr);
 	}
 
+	/**
+	 * <p>暴力算法</p>
+	 * @param haystack
+	 * @param needle
+	 * @return
+	 * @author sly
+	 * @time 2019年8月22日
+	 */
 	public static int strStr(String haystack, String needle) {
-		return 0;
+		if("".equals(needle)) {
+			return 0;
+		}
+		char[] haystackArray = haystack.toCharArray();
+		char[] needleArray = needle.toCharArray();
+		
+		
+		for (int i = 0; i < haystackArray.length; i++) {
+			if(i + needleArray.length <= haystackArray.length) {
+				boolean flag = true;
+				for (int j = 0; j < needleArray.length; j++) {
+					if(haystackArray[i + j] != needleArray[j]) {
+						flag = false;
+						break;
+					}
+				}
+				if(flag) {
+					return i;
+				}
+			}
+			
+		}
+		
+		return -1;
+	}
+	
+	/**
+	 * 
+	 * @param haystack
+	 * @param needle
+	 * @return
+	 * @author sly
+	 * @time 2019年8月22日
+	 */
+	public static int strStr2(String haystack, String needle) {
+		return -1;
 	}
 }
