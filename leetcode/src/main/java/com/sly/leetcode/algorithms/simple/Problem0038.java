@@ -25,10 +25,31 @@ package com.sly.leetcode.algorithms.simple;
 public class Problem0038 {
 	
 	public static void main(String[] args) {
-		
+		System.out.println(countAndSay(6)); 
 	}
 
 	public static String countAndSay(int n) {
-		return "";
+		if(n == 1) {
+			return "1";
+		}
+		String str = countAndSay(n - 1);
+		char[] charArray = str.toCharArray();
+		StringBuffer newStr = new StringBuffer();
+		char value = charArray[0];
+		int count = 0;
+		for (int i = 0; i < charArray.length; i++) {
+			if(value == charArray[i]) {
+				count ++;
+			} else {
+				newStr.append(count);
+				newStr.append(value);
+				value = charArray[i];
+				count = 1;
+			}
+			
+		}
+		newStr.append(count);
+		newStr.append(value);
+		return newStr.toString();
 	}
 }

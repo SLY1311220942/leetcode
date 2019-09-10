@@ -21,26 +21,44 @@ package com.sly.leetcode.algorithms.simple;
  */
 public class Problem0035 {
 	
+	
 	public static void main(String[] args) {
-		
+		int[] nums = {1,3,5,6}; 
+		//int target = 5;
+		//int target = 2;
+		//int target = 7;
+		int target = 0;
+		System.out.println(searchInsert(nums,target));
 	}
 	
+	/**
+	 * <p>暴力方式</p>
+	 * @param nums
+	 * @param target
+	 * @return
+	 */
 	public static int searchInsert(int[] nums, int target) {
-		int length = nums.length;
-		int index = length / 2;
-		while(true) {
-			if(nums[index] > target) {
-				if(index == 0) {
-					return index;
-				}
-			} else if(nums[index] < target) {
-				if((index + 1) == length) {
-					return index;
-				}
-			} else {
-				return index;
+		if(nums.length == 0 || target <= nums[0]) {
+			return 0;
+		}
+		for (int i = 0; i < nums.length; i++) {
+			if(nums[i] == target) {
+				return i;
+			}else if(target < nums[i] && target > nums[i-1]) {
+				return i;
 			}
 		}
+		return nums.length;
+    }
+	
+	/**
+	 * <p>二分法</p>
+	 * @param nums
+	 * @param target
+	 * @return
+	 */
+	public static int searchInsert2(int[] nums, int target) {
+		return 0;
     }
 
 }
