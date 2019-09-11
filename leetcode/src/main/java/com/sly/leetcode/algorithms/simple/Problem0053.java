@@ -15,10 +15,39 @@ package com.sly.leetcode.algorithms.simple;
 public class Problem0053 {
 	
 	public static void main(String[] args) {
-		
+		int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
+		System.out.println(maxSubArray(nums));
 	}
 	
+	/**
+	 * <p>暴力方式不可取，超出时间限制.....</p>
+	 * @param nums
+	 * @return
+	 */
 	public static int maxSubArray(int[] nums) {
-        return 0;
+		int max = 0;
+		for (int num : nums) {
+			max += num;
+		}
+		
+		for (int i = 0; i < nums.length; i++) {
+			
+			for (int j = 0; j < nums.length - i; j++) {
+				int total = nums[j];
+				for (int k = 1; k <= i; k++) {
+					total += nums[j + k];
+				}
+				if(total > max) {
+					max = total;
+				}
+				
+			}
+			
+		}
+        return max;
     }
+	
+	public static int maxSubArray2(int[] nums) {
+		return 0;
+	}
 }
