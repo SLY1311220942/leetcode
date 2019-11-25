@@ -22,10 +22,41 @@ package com.sly.leetcode.algorithms.simple;
 public class Problem0066 {
 	
 	public static void main(String[] args) {
+		int[] digits = {9,9,9,9};
+		int[] plusOne = plusOne(digits);
 		
+		for (int i = 0; i < plusOne.length; i++) {
+			if(i == 0) {
+				System.out.print("[");
+			}
+			System.out.print(plusOne[i]);
+			
+			if(i == plusOne.length - 1) {
+				System.out.print("]");
+			} else {
+				System.out.print(",");
+			}
+		}
 	}
 	
 	public static int[] plusOne(int[] digits) {
-        return null;
+		int index = digits.length - 1;
+		for (int i = 0; i < digits.length; i++) {
+			if((digits[index - i] + 1) < 10) {
+				digits[index - i] = digits[index - i] + 1;
+				break;
+			} else {
+				digits[index - i] = 0;
+				if(i == index) {
+					int[] newDigits = new int[index + 2];
+					newDigits[0] = 1;
+					for (int j = 0; j < digits.length; j++) {
+						newDigits[j + 1] = digits[j];
+					}
+					return newDigits;
+				}
+			}
+		}
+		return digits;
     }
 }
