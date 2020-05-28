@@ -1,5 +1,8 @@
 package com.sly.leetcode.algorithms.simple;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * <p>
  * 83. 删除排序链表中的重复元素
@@ -32,19 +35,19 @@ package com.sly.leetcode.algorithms.simple;
 public class Problem0083 {
 
 	public static void main(String[] args) {
-		ListNode node = new ListNode(5);
-		ListNode node1 = new ListNode(5);
+		ListNode node = new ListNode(3);
+		ListNode node1 = new ListNode(3);
 		node1.next = node;
-		ListNode node2 = new ListNode(4);
+		ListNode node2 = new ListNode(3);
 		node2.next = node1;
 		ListNode node3 = new ListNode(3);
 		node3.next = node2;
 		ListNode node4 = new ListNode(3);
 		node4.next = node3;
-		ListNode head = new ListNode(2);
+		ListNode head = new ListNode(3);
 		head.next = node4;
 
-		head = deleteDuplicates(head);
+		head = deleteDuplicates2(head);
 		ListNode index = head;
 		System.out.println(index.val);
 		while (index.next != null) {
@@ -54,18 +57,42 @@ public class Problem0083 {
 	}
 
 	public static ListNode deleteDuplicates(ListNode head) {
-		int val = head.val;
-		ListNode last = head.next;
-		while (last != null) {
-			System.out.println("val:" + val + " last:" + last.val);
-			if (last.val == val) {
-				last = last.next;
-			} else {
-				val = last.val;
-				last = last.next;
+		if(head == null) {
+			return head;
+		}
+		List<ListNode> list = new ArrayList<>();
+		ListNode index = head;
+		ListNode next = head.next;
+		list.add(head);
+		while(index != null && next != null) {
+			if(index.val != next.val) {
+				list.add(next);
 			}
-			
+			index = next;
+			next = index.next;
+		}
+		for (int i = 0; i < list.size(); i++) {
+			if(i + 1 < (list.size())) {
+				list.get(i).next = list.get(i + 1);
+			} else {
+				list.get(i).next = null;
+			}
+		}
+		if(list.size() > 0) {
+			return list.get(0);
 		}
 		return head;
+	}
+	
+	
+	public static ListNode deleteDuplicates2(ListNode head) {
+		if(head == null || head.next == null){
+            return head;
+        }
+        head.next = deleteDuplicates(head.next);
+        if(head.val == head.next.val){
+            head = head.next;
+        }
+        return head;
 	}
 }
