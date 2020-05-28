@@ -7,11 +7,14 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<!-- 引入fastjson依赖 -->
-	<dependency>
-		<groupId>com.alibaba</groupId>
-		<artifactId>fastjson</artifactId>
-		<version>1.2.51</version>
-	</dependency>
+	<dependencies>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.51</version>
+		</dependency>
+	</dependencies>
+
 
 	<build>
 		<plugins>
@@ -27,6 +30,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-	
+
+
 </project>

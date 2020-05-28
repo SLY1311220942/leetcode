@@ -24,13 +24,29 @@ package com.sly.leetcode.algorithms.simple;
 public class Problem0070 {
 
 	public static void main(String[] args) {
-		
+		int n = 35;
+		System.out.println(climbStairs(n));
 	}
 	
+	/**
+	 * a(n) = a(n - 1) + a(n - 2)
+	 */
 	public static int climbStairs(int n) {
-		
-		
-        return 0;
+		if(n < 1) {
+			return 0;
+		}
+		if(n <= 2) {
+			return n;
+		}
+		int a = 1;
+		int b = 2;
+		int total = 0;
+		for (int i = 2;i < n; i++) {
+			total = a + b;
+			a = b;
+			b = total;
+		}
+		return total;
     }
 	
 }
