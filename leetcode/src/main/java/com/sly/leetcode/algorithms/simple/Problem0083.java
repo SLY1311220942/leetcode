@@ -30,7 +30,7 @@ import java.util.List;
  * </p>
  * 
  * @author sly
- * @time 2019年11月25日
+ * @date 2019年11月25日
  */
 public class Problem0083 {
 
@@ -58,13 +58,13 @@ public class Problem0083 {
 
 	public static ListNode deleteDuplicates(ListNode head) {
 		if(head == null) {
-			return head;
+			return null;
 		}
 		List<ListNode> list = new ArrayList<>();
 		ListNode index = head;
 		ListNode next = head.next;
 		list.add(head);
-		while(index != null && next != null) {
+		while(next != null) {
 			if(index.val != next.val) {
 				list.add(next);
 			}
