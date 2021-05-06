@@ -1,5 +1,7 @@
 package com.sly.leetcode.algorithms.simple;
 
+import com.sly.leetcode.algorithms.model.TreeNode;
+
 /**
  * <p>100. 相同的树</p>
  * <p>给定两个二叉树，编写一个函数来检验它们是否相同。</p>
@@ -90,12 +92,3 @@ public class Problem0100 {
     }
 }
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}

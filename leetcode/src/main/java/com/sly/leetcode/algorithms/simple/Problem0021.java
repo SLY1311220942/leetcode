@@ -1,5 +1,7 @@
 package com.sly.leetcode.algorithms.simple;
 
+import com.sly.leetcode.algorithms.model.ListNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,11 +100,3 @@ public class Problem0021 {
 	}
 }
 
-class ListNode {
-	int val;
-	ListNode next;
-
-	ListNode(int x) {
-		val = x;
-	}
-}

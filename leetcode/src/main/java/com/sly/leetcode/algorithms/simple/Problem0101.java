@@ -1,5 +1,7 @@
 package com.sly.leetcode.algorithms.simple;
 
+import com.sly.leetcode.algorithms.model.TreeNode;
+
 /**
  * <p>给定一个二叉树，检查它是否是镜像对称的。</p>
  * <p>例如，二叉树 [1,2,2,3,4,4,3] 是对称的。</p>
@@ -31,22 +33,3 @@ public class Problem0101 {
     }
 }
 
-
-class TreeNode2 {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode2() {
-    }
-
-    TreeNode2(int val) {
-        this.val = val;
-    }
-
-    TreeNode2(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
